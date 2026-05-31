@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<h2>Edit Book</h2>
+
+<% if (errors && errors.length) { %>
+    <div class="error">
+        <ul>
+            <% errors.forEach(err => { %>
+                <li><%= err %></li>
+            <% }) %>
+        </ul>
+    </div>
+<% } %>
+
+<form action="/edit/<%= book.id %>" method="POST">
+    <label>Title:</label><br>
+    <input type="text" name="title" value="<%= book.title %>" required><br><br>
+
+    <label>Author:</label><br>
+    <input type="text" name="author" value="<%= book.author %>" required><br><br>
+
+    <label>ISBN:</label><br>
+    <input type="text" name="isbn" value="<%= book.isbn %>" required><br><br>
+
+    <label>Quantity:</label><br>
+    <input type="number" name="quantity" value="<%= book.quantity %>"><br><br>
+
+    <button type="submit">Update Book</button>
+    <a href="/">Cancel</a>
+</form>
+
+<%- include('partials/footer') %>
